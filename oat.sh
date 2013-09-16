@@ -132,6 +132,7 @@ make install
 
 # create saml signing key
 echo "create saml signing key"
+cd /etc/intel/cloudsecurity
 keytool -genkey -alias saml.key.alias -keyalg RSA -keysize 2048 -keystore saml.keystore.file -storepass saml.keystore.password -dname "CN=OpenAttestation, O=Security, OU=LTC, C=US" -validity 3650 -keypass saml.key.password
 keytool -export -alias saml.key.alias -keystore saml.keystore.file -storepass saml.keystore.password -file saml.crt
 openssl x509 -in saml.crt -inform der -out saml.crt.pem -outform pem
@@ -140,6 +141,8 @@ openssl x509 -in saml.crt -inform der -out saml.crt.pem -outform pem
 echo "create EK signing certificate"
 cd /etc/intel/cloudsecurity
 java -jar $OPEN_ATTESTATION/trust-agent/HisPrivacyCAWebServices2/target/HisPrivacyCAWebServices2-1.2-SNAPSHOT-setup.jar
+
+cp /etc/intel/cloudsecurity/clientfiles/hisprovisioner.properties /etc/intel/cloudsecurity/
 
 export endorsement_password=password
 openssl pkcs12 -in clientfiles/endorsement.p12 -out privacyca-endoresement.pem -nokeys -passin env:endorsement_password
