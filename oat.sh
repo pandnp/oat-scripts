@@ -1,8 +1,8 @@
 #!/bin/sh
-HOSTNAME=rainicorn
-PORTAL_USER=root
+HOSTNAME=`/bin/hostname`
+PORTAL_USER=fin
 SERVER_IP=192.168.1.109
-OPEN_ATTESTATION=/root/OpenAttestation
+OPEN_ATTESTATION=/home/fin/OpenAttestation
 OAT_JARS=$OPEN_ATTESTATION/trust-agent/TrustAgent/target/jars
 OAT_LIB=$OPEN_ATTESTATION/trust-agent/HisPrivacyCAWebServices2/target/WEB-INF/lib
 PORTALS_LIB=$OPEN_ATTESTATION/portals/TrustDashBoard/target/TrustDashBoard-1.2-SNAPSHOT/WEB-INF/lib
@@ -15,6 +15,11 @@ PORTAL_DNAME="CN=$PORTAL_USER, $DNAME"
 
 # vim /usr/share/tomcat6/bin/catalina.sh
 # JAVA_OPTS=-Djava.endorsed.dirs=/usr/share/tomcat6/endorsed
+
+if [! (-e $CATALINA_HOME/endorsed)]
+then
+  mkdir $CATALINA_HOME/endorsed
+fi
 
 # jackson-core-asl-1.9.11.jar	
 # jackson-jaxrs-1.9.11.jar
@@ -59,14 +64,19 @@ echo "modify tomcat configuration"
 sed -i "s/ <\/Service>/<Connector port=\"8181\" minSpareThreads=\"5\" maxSpareThreads=\"75\" enableLookups=\"false\" disableUploadTimeout=\"true\" acceptCount=\"100\" maxThreads=\"200\" scheme=\"https\" secure=\"true\" SSLEnabled=\"true\" clientAuth=\"want\" sslProtocol=\"TLS\" ciphers=\"TLS_ECDH_anon_WITH_AES_256_CBC_SHA, TLS_ECDH_anon_WITH_AES_128_CBC_SHA, TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA, TLS_ECDH_RSA_WITH_AES_256_CBC_SHA, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA, TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA, TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA, TLS_DHE_DSS_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA\" keystoreFile=\"Certificate\/keystore.jks\" keystorePass=\"changeit\" truststoreFile=\"Certificate\/keystore.jks\" truststorePass=\"changeit\" \/><\/Service>/g" /etc/tomcat6/server.xml
 
 # database initialization
-# echo "database initialization"
-# mysql -uroot -e 'create database mw_as';
-# mysql -uroot mw_as < $OPEN_ATTESTATION/database/mysql/src/main/resources/com/intel/mtwilson/database/mysql/mtwilson.sql
+echo "database initialization"
+if ! mysql -uroot -e 'use mw_as';
+then
+  mysql -uroot -e 'create database mw_as';
+  mysql -uroot mw_as < $OPEN_ATTESTATION/database/mysql/src/main/resources/com/intel/mtwilson/database/mysql/mtwilson.sql
+fi
 
 # create Open Attestation configuration files
 echo "create OpenAttestation configuration files"
-#rm -rf /etc/intel/cloudsecurity
-mkdir -p /etc/intel/cloudsecurity
+if [! (-e /etc/intel/cloudsecurity)]
+then
+  mkdir -p /etc/intel/cloudsecurity
+fi
 
 echo 'mtwilson.api.baseurl=https://'$HOSTNAME':8181
 mtwilson.api.ssl.policy=TRUST_FIRST_CERTIFICATE
@@ -151,7 +161,10 @@ cp /etc/intel/cloudsecurity/clientfiles/PrivacyCA.cer /etc/intel/cloudsecurity/P
 
 # create attestation server certificate
 echo "create attestation server certificate"
-mkdir /etc/tomcat6/Certificate
+if [! (-e /etc/tomcat6/Certificate)]
+then
+  mkdir /etc/tomcat6/Certificate
+fi
 cd /etc/tomcat6/Certificate
 rm -rf keystore.jks
 keytool -genkey -alias s1as -keyalg RSA -keysize 2048 -keystore keystore.jks -storepass password -dname "CN=$SERVER_IP, O=Security, OU=LTC, C=US" -validity 3650 -keypass password
@@ -167,6 +180,7 @@ keytool -importcert -file /etc/tomcat6/Certificate/ssl.$SERVER_IP.crt -keystore 
 
 # create oVirt signing key
 echo "create oVirt signing key"
+cd /etc/intel/cloudsecurity
 keytool -genkey -alias ovirtssl -keyalg RSA  -keysize 2048 -keystore ovirt.jks -storepass password -dname "CN=$SERVER_IP, O=Security, OU=LTC, C=US" -validity 3650  -keypass password
 keytool -export -alias ovirtssl -keystore ovirt.jks -storepass password -file ovirtssl.crt 
 keytool -importcert -file /etc/tomcat6/Certificate/ssl.$SERVER_IP.crt -keystore ovirt.jks -storepass password  -alias "attestation server"
