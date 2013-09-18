@@ -1,7 +1,7 @@
 #!/bin/sh
 HOSTNAME=`/bin/hostname`
 PORTAL_USER=fin
-SERVER_IP=192.168.1.109
+SERVER_IP=9.41.149.106
 OPEN_ATTESTATION=/home/fin/OpenAttestation
 OAT_JARS=$OPEN_ATTESTATION/trust-agent/TrustAgent/target/jars
 OAT_LIB=$OPEN_ATTESTATION/trust-agent/HisPrivacyCAWebServices2/target/WEB-INF/lib
@@ -16,8 +16,7 @@ PORTAL_DNAME="CN=$PORTAL_USER, $DNAME"
 # vim /usr/share/tomcat6/bin/catalina.sh
 # JAVA_OPTS=-Djava.endorsed.dirs=/usr/share/tomcat6/endorsed
 
-if [! (-e $CATALINA_HOME/endorsed)]
-then
+if [ ! -e $CATALINA_HOME/endorsed ]; then
   mkdir $CATALINA_HOME/endorsed
 fi
 
@@ -65,17 +64,15 @@ sed -i "s/ <\/Service>/<Connector port=\"8181\" minSpareThreads=\"5\" maxSpareTh
 
 # database initialization
 echo "database initialization"
-if ! mysql -uroot -e 'use mw_as';
-then
+if !(mysql -uroot -e 'use mw_as'); then
   mysql -uroot -e 'create database mw_as';
   mysql -uroot mw_as < $OPEN_ATTESTATION/database/mysql/src/main/resources/com/intel/mtwilson/database/mysql/mtwilson.sql
 fi
 
 # create Open Attestation configuration files
 echo "create OpenAttestation configuration files"
-if [! (-e /etc/intel/cloudsecurity)]
-then
-  mkdir -p /etc/intel/cloudsecurity
+if [ ! -e /etc/intel/cloudsecurity ]; then
+  mkdir --parents /etc/intel/cloudsecurity
 fi
 
 echo 'mtwilson.api.baseurl=https://'$HOSTNAME':8181
@@ -161,8 +158,7 @@ cp /etc/intel/cloudsecurity/clientfiles/PrivacyCA.cer /etc/intel/cloudsecurity/P
 
 # create attestation server certificate
 echo "create attestation server certificate"
-if [! (-e /etc/tomcat6/Certificate)]
-then
+if [ ! -e /etc/tomcat6/Certificate ]; then
   mkdir /etc/tomcat6/Certificate
 fi
 cd /etc/tomcat6/Certificate
