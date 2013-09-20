@@ -6,12 +6,12 @@ OpenAttestation build, install and configuration scripts
 Tomcat6 users:
 Set PORTAL_USER, SERVER_IP, and OPEN_ATTESTATION variables
 
-./oat-tomcat
+./oat-tomcat.sh
 
 Glassfish users:
 Set PORTAL_USER, SERVER_IP, OPEN_ATTESTATION, and GLASSFISH_HOME variables
 
-./glassfish
+./glassfish.sh
 
 Login glassfish web portal, http://localhost:4848/common/index.jsf
 
@@ -40,4 +40,4 @@ TLS_RSA_WITH_AES_128_CBC_SHA
 Click Save
 $GLASSFISH_HOME/bin/asadmin restart-domain
 
-./oat-glassfish
+./oat-glassfish.sh
