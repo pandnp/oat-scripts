@@ -1,8 +1,8 @@
 #!/bin/sh
 HOSTNAME=`/bin/hostname`
-PORTAL_USER=fin
-SERVER_IP=9.41.149.106
-OPEN_ATTESTATION=/home/fin/OpenAttestation
+PORTAL_USER=
+SERVER_IP=
+OPEN_ATTESTATION=
 OAT_JARS=$OPEN_ATTESTATION/trust-agent/TrustAgent/target/jars
 OAT_LIB=$OPEN_ATTESTATION/trust-agent/HisPrivacyCAWebServices2/target/WEB-INF/lib
 PORTALS_LIB=$OPEN_ATTESTATION/portals/TrustDashBoard/target/TrustDashBoard-1.2-SNAPSHOT/WEB-INF/lib
