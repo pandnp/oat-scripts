@@ -5,11 +5,14 @@ OpenAttestation build, install and configuration scripts
 
 Tomcat6 users:
 Set PORTAL_USER, SERVER_IP, and OPEN_ATTESTATION variables
+
 ./oat-tomcat
 
 Glassfish users:
 Set PORTAL_USER, SERVER_IP, OPEN_ATTESTATION, and GLASSFISH_HOME variables
+
 ./glassfish
+
 Login glassfish web portal, http://localhost:4848/common/index.jsf
 
 Browse to Configuration > server-config > Network Config > Protocols > http-listener-2
