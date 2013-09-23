@@ -138,4 +138,4 @@ cp $OPEN_ATTESTATION/portals/WhiteListPortal/target/WhiteListPortal-1.2-SNAPSHOT
 cp $OPEN_ATTESTATION/services/AttestationService/target/AttestationService-1.2-SNAPSHOT-core.war AttestationService.war
 cp $OPEN_ATTESTATION/portals/TrustDashBoard/target/TrustDashBoard-1.2-SNAPSHOT-core.war TrustDashBoard.war
 
-/usr/share/glassfish3/glassfish/bin/asadmin restart-domain
+$GLASSFISH_HOME/bin/asadmin restart-domain
