@@ -115,6 +115,11 @@ keytool -genkey -alias s1as -keyalg RSA -keysize 2048 -keystore keystore.jks -st
 keytool -exportcert -alias s1as -keystore keystore.jks -storepass password -file ssl.$SERVER_IP.crt
 openssl x509 -in ssl.$SERVER_IP.crt -inform der -out ssl.$SERVER_IP.crt.pem -outform pem
 
+# create truststore file and add certificate to truststore
+echo "create truststore and add certificate to truststore"
+rm -rf cacerts.jks
+keytool -import -v -trustcacerts -alias s1as -file ssl.$SERVER_IP.crt -keystore cacerts.jks -keypass password
+
 # create portal signing key
 echo "create portal signing key"
 cd /etc/intel/cloudsecurity
