@@ -1,5 +1,5 @@
 #!/bin/sh
-OAT=
+OAT=$1
 OAT_JARS=$OAT/trust-agent/TrustAgent/target/jars
 OAT_LIB=$OAT/trust-agent/HisPrivacyCAWebServices2/target/WEB-INF/lib
 PORTALS_LIB=$OAT/portals/TrustDashBoard/target/TrustDashBoard-1.2-SNAPSHOT/WEB-INF/lib
