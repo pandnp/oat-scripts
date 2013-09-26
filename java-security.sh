@@ -12,6 +12,5 @@ fi
 
 cd $HOME
 wget --no-cookies --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com" http://download.oracle.com/otn-pub/java/jce_policy/6/jce_policy-6.zip
---2013-09-25 16:11:53--  http://download.oracle.com/otn-pub/java/jce_policy/6/jce_policy-6.zip
 unzip jce_policy-6.zip
 cp jce/*.jar $JAVA_HOME/jre/lib/security
