@@ -1,10 +1,10 @@
 #!/bin/sh
 
 HOST=`/bin/hostname`
-USER=
-IP=
-OAT=
-GLASSFISH_HOME=
+USER=fin
+IP=192.168.1.1
+OAT=/root/home
+GLASSFISH_HOME=/root/home/glasfish3/glassfish
 
 sh mysql.sh $OAT
 sh config.sh $HOST $IP

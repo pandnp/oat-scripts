@@ -1,13 +1,13 @@
 #!/bin/sh
-OPEN_ATTESTATION=
-OAT_JARS=$OPEN_ATTESTATION/trust-agent/TrustAgent/target/jars
-OAT_LIB=$OPEN_ATTESTATION/trust-agent/HisPrivacyCAWebServices2/target/WEB-INF/lib
-PORTALS_LIB=$OPEN_ATTESTATION/portals/TrustDashBoard/target/TrustDashBoard-1.2-SNAPSHOT/WEB-INF/lib
-GLASSFISH_HOME=
+OAT=
+OAT_JARS=$OAT/trust-agent/TrustAgent/target/jars
+OAT_LIB=$OAT/trust-agent/HisPrivacyCAWebServices2/target/WEB-INF/lib
+PORTALS_LIB=$OAT/portals/TrustDashBoard/target/TrustDashBoard-1.2-SNAPSHOT/WEB-INF/lib
+GLASSFISH_HOME=$HOME/glassfish3/glassfish
 
-if [ ! -e $GLASSFISH_HOME/modules ]; then
-  mkdir $GLASSFISH_HOME/modules
-fi
+cd $HOME
+wget http://download.java.net/glassfish/v3/release/glassfish-v3.zip
+unzip glassfish-v3.zip
 
 # jackson-core-asl-1.9.11.jar   
 # jackson-jaxrs-1.9.11.jar
