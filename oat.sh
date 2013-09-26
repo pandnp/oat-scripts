@@ -1,7 +1,7 @@
 #!/bin/sh
 
 HOST=`/bin/hostname`
-GLASSFISH_HOME=$HOME/glassfishv3/glassfish
+GLASSFISH_HOME=$HOME/glassfish3/glassfish
 USER=$1
 IP=$2
 OAT=$3
