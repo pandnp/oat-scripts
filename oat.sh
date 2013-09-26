@@ -7,6 +7,7 @@ OAT=/root/home
 GLASSFISH_HOME=/root/home/glasfish3/glassfish
 
 sh mysql.sh $OAT
+sh glassfish $OAT
 sh config.sh $HOST $IP
 sh aikqverify.sh $OAT
 sh keytool.sh $OAT $GLASSFISH_HOME $IP $USER
