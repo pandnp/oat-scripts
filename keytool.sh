@@ -40,6 +40,7 @@ keytool -import -v -trustcacerts -alias s1as -file ssl.$SERVER_IP.crt -keystore 
 # create portal signing key
 echo "create portal signing key"
 cd /etc/intel/cloudsecurity
+rm -rf portal.jks
 keytool -genkey -alias admin -keyalg RSA -keysize 2048 -keystore portal.jks -storepass password -dname "CN=$USER, O=Security, OU=LTC, C=US" -validity 3650 -keypass password
 keytool -importcert -file saml.crt -keystore portal.jks -storepass password -alias "mtwilson (saml)"
 keytool -importcert -file $GLASSFISH_HOME/domains/domain1/config/ssl.$SERVER_IP.crt -keystore portal.jks -storepass password -alias "mtwilson (ssl)"
@@ -47,6 +48,7 @@ keytool -importcert -file $GLASSFISH_HOME/domains/domain1/config/ssl.$SERVER_IP.
 # create oVirt signing key
 echo "create oVirt signing key"
 cd /etc/intel/cloudsecurity
+rm -rf ovirt.jks
 keytool -genkey -alias ovirtssl -keyalg RSA  -keysize 2048 -keystore ovirt.jks -storepass password -dname "CN=$SERVER_IP, O=Security, OU=LTC, C=US" -validity 3650  -keypass password
 keytool -export -alias ovirtssl -keystore ovirt.jks -storepass password -file ovirtssl.crt
 keytool -importcert -file $GLASSFISH_HOME/domains/domain1/config/ssl.$SERVER_IP.crt -keystore ovirt.jks -storepass password  -alias "attestation server"
