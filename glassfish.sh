@@ -6,8 +6,10 @@ PORTALS_LIB=$OAT/portals/TrustDashBoard/target/TrustDashBoard-2.0/WEB-INF/lib
 GLASSFISH_HOME=$HOME/glassfish3/glassfish
 
 cd $HOME
-wget http://download.java.net/glassfish/3.1.2.2/release/glassfish-3.1.2.2.zip
-unzip glassfish-v3.zip
+if [ ! -e glassfish3 ]; then
+  wget http://download.java.net/glassfish/3.1.2.2/release/glassfish-3.1.2.2.zip
+  unzip glassfish-3.1.2.2.zip
+fi
 
 # jackson-core-asl-1.9.11.jar   
 # jackson-jaxrs-1.9.11.jar
