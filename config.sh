@@ -1,7 +1,7 @@
 #!/bin/sh
 
-HOSTNAME=$1
-SERVER_IP=$2
+HOSTNAME=`/bin/hostname`
+SERVER_IP=$1
 
 # create configuration files
 echo "create OpenAttestation configuration files"
