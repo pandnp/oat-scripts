@@ -28,3 +28,7 @@ git clone https://github.com/pandnp/oat-scripts
 cd oat-scripts
 
 sudo ./oat.sh $USER $IP $OAT_HOME
+
+cd $HOME
+
+sudo glassfish3/glassfish/bin/asadmin restart-domain domain1
