@@ -25,4 +25,6 @@ cd $HOME
 
 git clone https://github.com/pandnp/oat-scripts
 
+cd oat-scripts
+
 sudo ./oat.sh $USER $IP $OAT_HOME
