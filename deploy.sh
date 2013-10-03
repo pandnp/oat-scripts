@@ -12,9 +12,9 @@ cp $OAT/portals/WhiteListPortal/target/WhiteListPortal-2.0-core.war WhiteListPor
 cp $OAT/services/AttestationService/target/AttestationService-2.0-core.war AttestationService.war
 cp $OAT/portals/TrustDashBoard/target/TrustDashBoard-2.0-core.war TrustDashBoard.war
 
-$GLASSFISH_HOME/bin/asadmin restart-domain domain1
-$GLASSFISH_HOME/bin/asadmin deploy HisPrivacyCAWebServices2.war
-$GLASSFISH_HOME/bin/asadmin deploy WLMService.war
-$GLASSFISH_HOME/bin/asadmin deploy WhiteListPortal.war
-$GLASSFISH_HOME/bin/asadmin deploy AttestationService.war
-$GLASSFISH_HOME/bin/asadmin deploy TrustDashBoard.war
+#$GLASSFISH_HOME/bin/asadmin restart-domain domain1
+#$GLASSFISH_HOME/bin/asadmin deploy HisPrivacyCAWebServices2.war
+#$GLASSFISH_HOME/bin/asadmin deploy WLMService.war
+#$GLASSFISH_HOME/bin/asadmin deploy WhiteListPortal.war
+#$GLASSFISH_HOME/bin/asadmin deploy AttestationService.war
+#$GLASSFISH_HOME/bin/asadmin deploy TrustDashBoard.war
