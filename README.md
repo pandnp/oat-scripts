@@ -5,7 +5,7 @@ OpenAttestation build, install and configuration scripts
 
 ### Install dependencies
 
-sudo apt-get install git maven openjdk-7-jdk zip make g++ makeself openssl libssl-dev mysql-server
+sudo apt-get install git maven openjdk-6-jdk openjdk-7-jdk zip make g++ makeself openssl libssl-dev mysql-server
 
 ### Download and build OpenAttestation
 
