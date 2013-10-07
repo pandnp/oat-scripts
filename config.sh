@@ -2,6 +2,7 @@
 
 HOSTNAME=`/bin/hostname`
 SERVER_IP=$1
+USER=$2
 
 # create configuration files
 echo "create OpenAttestation configuration files"
@@ -24,7 +25,7 @@ EndorsementCaPassword=password
 CertValidityDays=3652
 AikAuth=1111111111111111111111111111111111111111' > /etc/intel/cloudsecurity/privacyca-client.properties
 
-echo 'ClientFilesDownloadUsername=admin
+echo 'ClientFilesDownloadUsername='$USER'
 ClientFilesDownloadPassword=password' > /etc/intel/cloudsecurity/PrivacyCA.properties
 
 echo 'com.intel.mountwilson.as.trustagent.timeout=3
