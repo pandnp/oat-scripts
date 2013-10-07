@@ -16,13 +16,9 @@ Leave mysql password blank
 
 ````
 $ cd $HOME
-
 $ git clone https://github.com/OpenAttestation/OpenAttestation
-
 $ cd OpenAttestation
-
 $ git checkout next
-
 $ mvn clean install
 ````
 
@@ -30,14 +26,9 @@ $ mvn clean install
 
 ````
 $ cd $HOME
-
 $ git clone https://github.com/pandnp/oat-scripts
-
 $ cd oat-scripts
-
 $ sudo ./oat.sh $USER $IP $OAT_HOME
-
 $ cd $HOME
-
 $ sudo glassfish3/glassfish/bin/asadmin restart-domain domain1
 ````
