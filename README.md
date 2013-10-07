@@ -19,8 +19,8 @@ $ cd OpenAttestation
 
 $ git checkout next
 
-$ mvn clean install
-````
+$ mvn clean install````
+
 ### Download scripts and install OpenAttestation
 
 ````$ cd $HOME
