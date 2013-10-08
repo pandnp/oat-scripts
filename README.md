@@ -12,7 +12,7 @@ $ sudo apt-get install openssl libssl-dev mysql-server
 
 Leave mysql password blank
 
-### Download and build OpenAttestation
+### Download source and build OpenAttestation
 
 ````
 $ cd $HOME
