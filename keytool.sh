@@ -30,7 +30,7 @@ cd $GLASSFISH_HOME/domains/domain1/config
 rm -rf keystore.jks
 keytool -genkey -alias s1as -keyalg RSA -keysize 2048 -keystore keystore.jks -storepass password -dname "CN=$HOST, O=Security, OU=LTC, C=US" -validity 3650 -keypass password
 keytool -exportcert -alias s1as -keystore keystore.jks -storepass password -file ssl.$HOST.crt
-openssl x509 -in ssl.$HOST.crt -inform der -out ssl.$SERVER_IP.crt.pem -outform pem
+openssl x509 -in ssl.$HOST.crt -inform der -out ssl.$HOST.crt.pem -outform pem
 
 # create truststore file and add certificate to truststore
 echo "create truststore and add certificate to truststore"
