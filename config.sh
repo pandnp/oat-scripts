@@ -30,7 +30,7 @@ ClientFilesDownloadPassword=password' > /etc/intel/cloudsecurity/PrivacyCA.prope
 
 echo 'com.intel.mountwilson.as.trustagent.timeout=3
 com.intel.mountwilson.as.attestation.hostTimeout=60
-com.intel.mountwilson.as.home=/var/opt/intel/aikqverifyhome
+com.intel.mountwilson.as.home=/var/opt/intel/aikverifyhome
 com.intel.mountwilson.as.aikqverify.cmd=aikqverify
 com.intel.mountwilson.as.openssl.cmd=openssl.sh
 saml.key.aslias=samlkey1
