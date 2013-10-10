@@ -1,7 +1,6 @@
 #!/bin/sh
 
 HOSTNAME=`/bin/hostname`
-SERVER_IP=$1
 USER=$2
 
 # create configuration files
@@ -37,9 +36,9 @@ saml.key.aslias=samlkey1
 saml.keystore.file=SAML.jks
 saml.keystore.password=password
 saml.validity.seconds=3600
-saml.issuer=https://'$SERVER_IP':8181
+saml.issuer=https://'$HOSTNAME':8181
 saml.key.password=password
-privacyca.server='$SERVER_IP'
+privacyca.server='$HOSTNAME'
 com.intel.mtwilson.as.buisiness.trust=sleepTime=1' > /etc/intel/cloudsecurity/attestation-service.properties
 
 echo 'mtwilson.tdbpkeystore.dir=/etc/intel/cloudsecurity
