@@ -3,7 +3,7 @@
 HOST=`/bin/hostname`
 GLASSFISH_HOME=$HOME/glassfish3/glassfish
 USER=$1
-OAT=$3
+OAT=$2
 
 sh java-security.sh
 sh mysql.sh "$OAT"
