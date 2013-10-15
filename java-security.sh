@@ -11,6 +11,8 @@ if !( grep -Fxq $PROVIDER_10 $FILE ) then
 fi
 
 cd $HOME
-wget --no-cookies --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com" http://download.oracle.com/otn-pub/java/jce_policy/6/jce_policy-6.zip
-unzip jce_policy-6.zip
-cp jce/*.jar $JAVA_HOME/jre/lib/security
+if [ ! -e jce ]; then
+  wget --no-cookies --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com" http://download.oracle.com/otn-pub/java/jce_policy/6/jce_policy-6.zip
+  unzip jce_policy-6.zip
+  cp jce/*.jar $JAVA_HOME/jre/lib/security
+fi
