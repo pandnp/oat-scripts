@@ -9,7 +9,7 @@ OAT=$3
 sh java-security.sh
 sh mysql.sh "$OAT"
 sh glassfish.sh "$OAT"
-sh config.sh "$USER" "$IP"
+sh config.sh "$IP" "$USER"
 sh aikqverify.sh "$OAT"
 sh keytool.sh "$OAT" "$GLASSFISH_HOME" "$HOST" "$USER"
 sh deploy.sh "$OAT" "$GLASSFISH_HOME"
