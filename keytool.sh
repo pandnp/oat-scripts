@@ -8,6 +8,9 @@ USER=$4
 # create saml signing key
 echo "create saml signing key"
 cd /etc/intel/cloudsecurity
+rm -rf saml.crt
+rm -rf saml.crt.pem
+rm -rf saml.keystore.file
 keytool -genkey -alias saml.key.alias -keyalg RSA -keysize 2048 -keystore saml.keystore.file -storepass saml.keystore.password -dname "CN=OpenAttestation, O=Security, OU=LTC, C=US" -validity 3650 -keypass saml.key.password
 keytool -export -alias saml.key.alias -keystore saml.keystore.file -storepass saml.keystore.password -file saml.crt
 openssl x509 -in saml.crt -inform der -out saml.crt.pem -outform pem
