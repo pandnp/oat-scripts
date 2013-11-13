@@ -15,7 +15,7 @@ mtwilson.api.ssl.policy=TRUST_FIRST_CERTIFICATE
 mtwilson.db.driver=com.mysql.jdbc.Driver
 mtwilson.db.url=jdbc:mysql://localhost/mw_as
 mtwilson.db.user=root
-mtwilson.db.password=' > /etc/intel/cloudsecurity/mtwilson.properties
+mtwilson.db.password=password' > /etc/intel/cloudsecurity/mtwilson.properties
 
 echo 'PrivacyCaUrl=https://'$HOSTNAME':8181/HisPrivacyCAWebServices2
 PrivacyCaSubjectName=HIS_PRIVACY_CA
