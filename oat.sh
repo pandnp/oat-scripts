@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ $# -ne 3]; then
+	echo "Usage `basename $0` {user} {server-ip} {path/to/OpenAttestation}"
+	exit 65 # E_BADARGS
+fi
+
 HOST=`/bin/hostname`
 GLASSFISH_HOME=$HOME/glassfish3/glassfish
 USER=$1
