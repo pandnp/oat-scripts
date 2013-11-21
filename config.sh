@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# TODO : we need secure password storage
+
 HOSTNAME=`/bin/hostname`
 SERVER_IP=$1
 USER=$2
@@ -45,7 +47,7 @@ com.intel.mtwilson.as.buisiness.trust=sleepTime=1' > /etc/intel/cloudsecurity/at
 echo 'mtwilson.tdbpkeystore.dir=/etc/intel/cloudsecurity
 mtwilson.tdbp.keystore.password=password
 imagesRootPath= images/
-trustUnknown = images/Unknown.png
+trustUnknow = images/Unknown.png
 trustTrue = images/Trusted.png
 trustFalse = images/UnTrusted.png
 ubuntu = images/ubuntu.png
