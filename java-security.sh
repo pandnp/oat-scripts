@@ -1,6 +1,9 @@
 #!/bin/sh
 
-export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+if [ ! -n "${JAVA_HOME}" ]; then
+  echo "no JDK found - please set JAVA_HOME"
+  exit 
+fi
 
 PROVIDER_9="^security.provider.9=.*"
 PROVIDER_10="security.provider.10=org.bouncycastle.jce.provider.BouncyCastleProvider"
