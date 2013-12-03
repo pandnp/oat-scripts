@@ -11,7 +11,7 @@ cd /etc/intel/cloudsecurity
 rm -rf saml.crt
 rm -rf saml.crt.pem
 rm -rf saml.keystore.file
-keytool -genkey -alias saml.key.alias -keyalg RSA -keysize 2048 -keystore saml.keystore.file -storepass saml.keystore.password -dname "CN=OpenAttestation, O=Security, OU=LTC, C=US" -validity 3650 -keypass saml.key.password
+keytool -genkey -alias saml.key.alias -keyalg RSA -keysize 2048 -keystore saml.keystore.file -storepass saml.keystore.password -dname "CN=OpenAttestation, O=My Org, OU=Mt Wilson, C=US" -validity 3650 -keypass saml.key.password
 keytool -export -alias saml.key.alias -keystore saml.keystore.file -storepass saml.keystore.password -file saml.crt
 openssl x509 -in saml.crt -inform der -out saml.crt.pem -outform pem
 
@@ -31,7 +31,7 @@ cp /etc/intel/cloudsecurity/clientfiles/PrivacyCA.cer /etc/intel/cloudsecurity/P
 echo "create attestation server certificate"
 cd $GLASSFISH_HOME/domains/domain1/config
 rm -rf keystore.jks
-keytool -genkey -alias s1as -keyalg RSA -keysize 2048 -keystore keystore.jks -storepass password -dname "CN=$HOST, O=Security, OU=LTC, C=US" -validity 3650 -keypass password
+keytool -genkey -alias s1as -keyalg RSA -keysize 2048 -keystore keystore.jks -storepass password -dname "CN=$HOST, O=My Org , OU=Mt Wilson, C=US" -validity 3650 -keypass password
 keytool -exportcert -alias s1as -keystore keystore.jks -storepass password -file ssl.$HOST.crt
 openssl x509 -in ssl.$HOST.crt -inform der -out ssl.$HOST.crt.pem -outform pem
 
@@ -44,7 +44,7 @@ keytool -import -v -trustcacerts -alias s1as -file ssl.$HOST.crt -keystore cacer
 echo "create portal signing key"
 cd /etc/intel/cloudsecurity
 rm -rf portal.jks
-keytool -genkey -alias admin -keyalg RSA -keysize 2048 -keystore portal.jks -storepass password -dname "CN=$USER, O=Security, OU=LTC, C=US" -validity 3650 -keypass password
+keytool -genkey -alias admin -keyalg RSA -keysize 2048 -keystore portal.jks -storepass password -dname "CN=$USER, O=My Org, OU=Mt Wilson, C=US" -validity 3650 -keypass password
 keytool -importcert -file saml.crt -keystore portal.jks -storepass password -alias "mtwilson (saml)"
 keytool -importcert -file $GLASSFISH_HOME/domains/domain1/config/ssl.$HOST.crt -keystore portal.jks -storepass password -alias "mtwilson (ssl)"
 
@@ -52,6 +52,6 @@ keytool -importcert -file $GLASSFISH_HOME/domains/domain1/config/ssl.$HOST.crt -
 echo "create oVirt signing key"
 cd /etc/intel/cloudsecurity
 rm -rf ovirt.jks
-keytool -genkey -alias ovirtssl -keyalg RSA  -keysize 2048 -keystore ovirt.jks -storepass password -dname "CN=$HOST, O=Security, OU=LTC, C=US" -validity 3650  -keypass password
+keytool -genkey -alias ovirtssl -keyalg RSA  -keysize 2048 -keystore ovirt.jks -storepass password -dname "CN=$HOST, O=My Org, OU=Mt Wilson, C=US" -validity 3650  -keypass password
 keytool -export -alias ovirtssl -keystore ovirt.jks -storepass password -file ovirtssl.crt
 keytool -importcert -file $GLASSFISH_HOME/domains/domain1/config/ssl.$HOST.crt -keystore ovirt.jks -storepass password  -alias "attestation server"
