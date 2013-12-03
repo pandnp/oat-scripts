@@ -2,7 +2,7 @@
 OAT=$1
 OAT_JARS=$OAT/trust-agent/TrustAgent/target/jars
 OAT_LIB=$OAT/trust-agent/HisPrivacyCAWebServices2/target/WEB-INF/lib
-PORTALS_LIB=$OAT/portals/TrustDashBoard/target/TrustDashBoard-2.0/WEB-INF/lib
+PORTALS_LIB=$OAT/portals/TrustDashBoard/target/TrustDashBoard-*/WEB-INF/lib
 GLASSFISH_HOME=$HOME/glassfish3/glassfish
 
 cd $HOME

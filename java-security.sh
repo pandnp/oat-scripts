@@ -1,8 +1,9 @@
 #!/bin/sh
 
-if [ ! -n "${JAVA_HOME}" ]; then
-  echo "no JDK found - please set JAVA_HOME"
-  exit 
+if [ -z "${JAVA_HOME}" ]
+    then
+        echo "Error: JAVA_HOME is not set."; 
+        exit 1;
 fi
 
 PROVIDER_9="^security.provider.9=.*"

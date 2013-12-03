@@ -6,9 +6,9 @@ OAT=$1
 echo "install aikqverify"
 cd $HOME
 if [ ! -e aikqverify-2.0 ]; then
-  cp $OAT/services/aikqverify/target/aikqverify-2.0.zip $HOME
-  unzip aikqverify-2.0.zip
+  cp $OAT/services/aikqverify/target/aikqverify-*.zip $HOME
+  unzip aikqverify-*.zip
 fi
-cd aikqverify-2.0
+cd aikqverify-*
 make
 make install
