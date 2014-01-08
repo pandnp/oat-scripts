@@ -11,9 +11,5 @@ if [ ! -e glassfish3 ]; then
   unzip glassfish-3.1.2.2.zip
 fi
 
-# jackson-core-asl-1.9.11.jar   
-# jackson-jaxrs-1.9.11.jar
-# jackson-mapper-asl-1.9.11.jar
-# jackson-xc-1.9.11.jar
 cp $OAT_JARS/jackson*.jar $GLASSFISH_HOME/modules
 cp $PORTALS_LIB/jackson-xc*.jar $GLASSFISH_HOME/modules

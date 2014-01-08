@@ -18,7 +18,7 @@ openssl x509 -in saml.crt -inform der -out saml.crt.pem -outform pem
 # create EK signing certificate
 echo "create EK signing certificate"
 cd /etc/intel/cloudsecurity
-java -jar $OAT/trust-agent/HisPrivacyCAWebServices2/target/HisPrivacyCAWebServices2-2.0-setup.jar
+java -jar $OAT/trust-agent/HisPrivacyCAWebServices2/target/HisPrivacyCAWebServices2-*-setup.jar
 
 cp /etc/intel/cloudsecurity/clientfiles/hisprovisioner.properties /etc/intel/cloudsecurity/
 
