@@ -21,9 +21,9 @@ mtwilson.db.password=password' > /etc/intel/cloudsecurity/mtwilson.properties
 
 echo 'PrivacyCaUrl=https://'$HOSTNAME':8181/HisPrivacyCAWebServices2
 PrivacyCaSubjectName=HIS_PRIVACY_CA
-PrivacyCaPassword=password
+PrivacyCaPassword=***replace***
 EndorsementCaSubjectName=Endorsement_CA_Rev_1
-EndorsementCaPassword=password
+EndorsementCaPassword=***replace***
 CertValidityDays=3652
 AikAuth=1111111111111111111111111111111111111111' > /etc/intel/cloudsecurity/privacyca-client.properties
 
@@ -37,10 +37,10 @@ com.intel.mountwilson.as.aikqverify.cmd=aikqverify
 com.intel.mountwilson.as.openssl.cmd=openssl.sh
 saml.key.aslias=samlkey1
 saml.keystore.file=SAML.jks
-saml.keystore.password=password
+saml.keystore.password=changeit
 saml.validity.seconds=3600
 saml.issuer=https://'$SERVER_IP':8181
-saml.key.password=password
+saml.key.password=changeit
 privacyca.server='$SERVER_IP'
 com.intel.mtwilson.as.buisiness.trust=sleepTime=1' > /etc/intel/cloudsecurity/attestation-service.properties
 
