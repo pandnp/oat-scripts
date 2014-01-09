@@ -21,11 +21,15 @@ mtwilson.db.password=password' > /etc/intel/cloudsecurity/mtwilson.properties
 
 echo 'PrivacyCaUrl=https://'$HOSTNAME':8181/HisPrivacyCAWebServices2
 PrivacyCaSubjectName=HIS_PRIVACY_CA
-PrivacyCaPassword=***replace***
+PrivacyCaPassword=password
 EndorsementCaSubjectName=Endorsement_CA_Rev_1
-EndorsementCaPassword=***replace***
+EndorsementCaPassword=password
 CertValidityDays=3652
-AikAuth=1111111111111111111111111111111111111111' > /etc/intel/cloudsecurity/privacyca-client.properties
+AikAuth=1111111111111111111111111111111111111111
+ecStorage=NVRAM
+ecSigningKeySize=2048
+ecLocation=/opt/intel/cloudsecurity/trustagent
+TpmOwnerAuth=1111111111111111111111111111111111111111' > /etc/intel/cloudsecurity/privacyca-client.properties
 
 echo 'ClientFilesDownloadUsername='$USER'
 ClientFilesDownloadPassword=password' > /etc/intel/cloudsecurity/PrivacyCA.properties
